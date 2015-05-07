@@ -9,3 +9,38 @@ I assume your machine is 64-bit, and you want your compiler to target 64-bit win
 3. Add `C:\dev\mingw64\bin` and `C:\dev\mingw32\bin`, in that order, to your `PATH`.
 
 Done. Now you can use `gcc`, `g++`, etc to get your 64-bit targetting compiler. To make 32-bit binaries, use `i686-w64-mingw32-g++` and co.
+
+---
+
+You also probably want to set up MSYS to make compiling of linux-based autoconf libraries easier.
+
+1. Download [msys2-base-x86_64-20150202.tar.xz](http://sourceforge.net/projects/msys2/files/Base/x86_64/msys2-base-x86_64-20150202.tar.xz/download). Inside this archive is a folder `msys64`. Extract it to `C:\dev\msys64`.
+
+2. Delete folders `C:\dev\msys64\mingw32` and `C:\dev\msys64\mingw64`.
+
+3. Open command prompt as administrator and run:
+
+   ```
+   mklink /d c:\dev\msys64\mingw64 c:\dev\mingw64
+   mklink /d c:\dev\msys64\mingw32 c:\dev\mingw32
+   ```
+
+4. Open `mingw64_shell.bat` and run:
+
+   ```
+   pacman --needed -Sy bash pacman pacman-mirrors msys2-runtime
+   ```
+
+5. Close the shell and reopen it. Then run:
+
+   ```
+   pacman -Su
+   ```
+
+6. Install common tools to build:
+
+   ```
+   pacman -S patch m4 wget tar lzip diffutils make
+   ```
+
+### Compiling linux libraries
