@@ -25,13 +25,13 @@ You also probably want to set up MSYS to make compiling of linux-based autoconf 
    mklink /d c:\dev\msys64\mingw32 c:\dev\mingw32
    ```
 
-4. Open `mingw64_shell.bat` and run:
+4. Open `mingw64_shell.bat`, close it (this must be done the first time), reopen and run:
 
    ```
    pacman --needed -Sy bash pacman pacman-mirrors msys2-runtime
    ```
 
-5. Close the shell and reopen it. Then run:
+5. Close again the shell and reopen it. Then run for a full system upgrade:
 
    ```
    pacman -Su
@@ -43,4 +43,15 @@ You also probably want to set up MSYS to make compiling of linux-based autoconf 
    pacman -S patch m4 wget tar lzip diffutils make
    ```
 
-### Compiling linux libraries
+Done. Whenever you want to build a library for the 64-bit compiler run `mingw64_shell.bat`. For 32-bit run `mingw32_shell.bat`.
+
+### Warning: do not install any MinGW packages through `pacman`.
+
+We use our own toolchain, not the one MSYS2 usually uses. This means that we can not use the MinGW packages in `pacman`.
+
+---
+
+As an example, and to test if our MSYS2 system is properly set up, we'll try and build a static 64-bit zlib library:
+
+1. Open `mingw64_shell.bat`.
+
