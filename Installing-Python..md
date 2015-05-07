@@ -5,3 +5,5 @@ Luckily, installing it is very easy. Go to the [Python downloads](https://www.py
 Then, by default it will suggest to install in `C:\PythonXY\`. Install in `C:\dev\PythonXY\` instead.
 
 The installer will ask you what features you want installed. Select all, and also make sure you tick _'Add python.exe to Path'_.
+
+Manually make sure Python3 comes __after__ Python2 in the `PATH`. Then go to your Python3 installation directory and __copy__ `python.exe` and `pythonw.exe` to `python3.exe` and `python3w.exe`.
