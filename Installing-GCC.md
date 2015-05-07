@@ -51,7 +51,22 @@ We use our own toolchain, not the one MSYS2 usually uses. This means that we can
 
 ---
 
-As an example, and to test if our MSYS2 system is properly set up, we'll try and build a static 64-bit zlib library:
+As an example, and to test if our MSYS2 system is properly set up, we'll try and build the 64-bit zlib library:
 
-1. Open `mingw64_shell.bat`.
+1. Open `mingw64_shell.bat` (and if not already, cd to `~`).
 
+2. Download and unpack zlib:
+
+   ```
+   $ wget http://zlib.net/zlib-1.2.8.tar.gz
+   $ tar xf zlib-1.2.8.tar.gz
+   $ cd zlib-1.2.8
+   ```
+
+3. Configure, compile and install:
+
+   ```
+   $ make -f win32/Makefile.gcc install \
+   BINARY_PATH=/mingw64/bin INCLUDE_PATH=/mingw64/include LIBRARY_PATH=/mingw64/lib
+   $ cd ..
+   ```
