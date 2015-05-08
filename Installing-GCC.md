@@ -46,7 +46,7 @@ You also probably want to set up MSYS to make compiling of linux-based autoconf 
 
 Done. Whenever you want to build a library for the 64-bit compiler run `mingw64_shell.bat`. For 32-bit run `mingw32_shell.bat`.
 
-### Warning: do not install any MinGW packages through `pacman`.
+### Warning: do not install any package with `mingw` in its name through `pacman`.
 
 We use our own toolchain, not the one MSYS2 usually uses. This means that we can not use the pre-built MinGW packages in `pacman`.
 
