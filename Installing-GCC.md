@@ -21,7 +21,7 @@ You also probably want to set up MSYS to make compiling of linux-based autoconf 
 3. Open command prompt as administrator and run:
 
    ```
-   > cd cd C:\dev\msys64
+   > cd C:\dev\msys64
    > mklink /d mingw64 ..\mingw64
    > mklink /d mingw32 ..\mingw32
    ```
