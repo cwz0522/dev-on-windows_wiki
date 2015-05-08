@@ -48,7 +48,7 @@ Done. Whenever you want to build a library for the 64-bit compiler run `mingw64_
 
 ### Warning: do not install any MinGW packages through `pacman`.
 
-We use our own toolchain, not the one MSYS2 usually uses. This means that we can not use the MinGW packages in `pacman`.
+We use our own toolchain, not the one MSYS2 usually uses. This means that we can not use the pre-built MinGW packages in `pacman`.
 
 ---
 
