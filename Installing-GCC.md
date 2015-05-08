@@ -67,7 +67,7 @@ As an example, and to test if our MSYS2 system is properly set up, we'll try and
 3. Configure, compile and install:
 
    ```
-   $ make -f win32/Makefile.gcc install \
-   BINARY_PATH=/mingw64/bin INCLUDE_PATH=/mingw64/include LIBRARY_PATH=/mingw64/lib
+   $ make -f win32/Makefile.gcc install BINARY_PATH=/mingw64/bin \
+   INCLUDE_PATH=/mingw64/include LIBRARY_PATH=/mingw64/lib
    $ cd ..
    ```
