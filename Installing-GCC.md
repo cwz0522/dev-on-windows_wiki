@@ -21,27 +21,27 @@ You also probably want to set up MSYS to make compiling of linux-based autoconf 
 3. Open command prompt as administrator and run:
 
    ```
-   cd cd C:\dev\msys64
-   mklink /d mingw64 ..\mingw64
-   mklink /d mingw32 ..\mingw32
+   > cd cd C:\dev\msys64
+   > mklink /d mingw64 ..\mingw64
+   > mklink /d mingw32 ..\mingw32
    ```
 
 4. Open `mingw64_shell.bat`, close it (this must be done the first time), reopen and run:
 
    ```
-   pacman --needed -Sy bash pacman pacman-mirrors msys2-runtime
+   $ pacman --needed -Sy bash pacman pacman-mirrors msys2-runtime
    ```
 
 5. Close again the shell and reopen it. Then run for a full system upgrade:
 
    ```
-   pacman -Su
+   $ pacman -Su
    ```
 
 6. Install common tools to build:
 
    ```
-   pacman -S patch m4 wget tar lzip diffutils make
+   $ pacman -S patch m4 wget tar lzip diffutils make
    ```
 
 Done. Whenever you want to build a library for the 64-bit compiler run `mingw64_shell.bat`. For 32-bit run `mingw32_shell.bat`.
