@@ -15,3 +15,7 @@ Dependency Walker is an incredibly useful tool that allows you to open an execut
 ### [Path Editor](http://path-editor.software.informer.com/)
 
 This rather obscure tool is great to quickly edit your PATH in a visual way.
+
+### [Tuxproject.de's Vim builds](https://tuxproject.de/projects/vim/)
+
+Proper Vim builds for Windows.
