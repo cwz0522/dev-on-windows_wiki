@@ -22,8 +22,8 @@ You also probably want to set up MSYS to make compiling of linux-based autoconf 
 
    ```
    > cd C:\dev\msys64
-   > mklink /d mingw64 ..\mingw64
-   > mklink /d mingw32 ..\mingw32
+   > mklink /d mingw64 c:\dev\mingw64
+   > mklink /d mingw32 c:\dev\mingw32
    ```
 
 4. Open `mingw64_shell.bat`, close it (this must be done the first time), reopen and run:
