@@ -21,7 +21,7 @@ I assume your machine is 64-bit, and you want your compiler to target 64-bit win
    $ pacman -S mingw-w64-i686-cmake mingw-w64-x86_64-cmake
    ```
 
-5. Add `C:\dev\msys64\mingw64\bin` and `C:\dev\msys64\mingw32\bin`, in that order, to your `PATH`. Note that MSYS2 also puts a lot of other tools in this directory, most notably Python. So put these entries below any other tools you might have installed in your PATH.
+5. Add `C:\dev\msys64\mingw64\bin` and `C:\dev\msys64\mingw32\bin`, __in that order__, to your `PATH`. Note that MSYS2 also puts a lot of other tools in this directory, most notably Python. So put these entries below any other tools you might have installed in your PATH.
 
 Done. Now you can use `gcc`, `g++`, etc to get your 64-bit targeting compiler from your regular command line. To make 32-bit binaries, use `i686-w64-mingw32-g++` and co.
 
