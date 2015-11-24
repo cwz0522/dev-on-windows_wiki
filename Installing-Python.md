@@ -16,3 +16,4 @@ Now you can use `python` for Python 2, `python3` for Python3.
 
 The latest version of both Python 2.x and 3.x should come with `pip`, the package manager. `pip` is for Python2, `pip3` is for Python3. To build a lot of packages you will need to have Visual Studio installed. As of writing, Python2 uses Visual C++ 2008, and Python3 uses 2010.
 
+I can also suggest [`pipwin`](https://pypi.python.org/pypi/pipwin/). It's a small pure-Python package that makes it really easy to install the excellent binary packages maintained by [Christoph Gohlke](http://www.lfd.uci.edu/~gohlke/pythonlibs/). Make sure for Python3 to go to your Python's scripts folder (`C:\Python3X\Scripts`) and __copy__ `pipwin.exe` to `pipwin3.exe`.
