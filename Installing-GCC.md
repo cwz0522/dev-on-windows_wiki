@@ -9,7 +9,7 @@ I assume your machine is 64-bit, and you want your compiler to target 64-bit win
 2. In the MSYS2 shell, execute:
 
     ```
-    $ update-core
+    update-core
     ```
 
 3. __Close the MSYS2 shell.__ Reopen it either from your start menu (MSYS2/MinGW-w64 Win64 Shell), or from `C:\dev\msys64\mingw64_shell.bat`. Hint: after starting up MSYS2, the prompt will say which version you launched. Generally you want the MINGW64 one.
@@ -17,8 +17,8 @@ I assume your machine is 64-bit, and you want your compiler to target 64-bit win
 4. Now we will update pre-installed MSYS2 packages and install GCC and common build tools. When you are queried to select packages and confirm the installation just press enter:
 
    ```
-   $ pacman -Su base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain
-   $ pacman -S mingw-w64-i686-cmake mingw-w64-x86_64-cmake
+   pacman -Su base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain
+   pacman -S mingw-w64-i686-cmake mingw-w64-x86_64-cmake
    ```
 
 5. Add `C:\dev\msys64\mingw64\bin` and `C:\dev\msys64\mingw32\bin`, __in that order__, to your `PATH`. Note that MSYS2 also puts a lot of other tools in this directory, most notably Python. So put these entries below any other tools you might have installed in your PATH.
@@ -36,21 +36,21 @@ As an example, we'll try and build the 64-bit zlib library:
 2. Download and unpack zlib:
 
    ```
-   $ wget http://zlib.net/zlib-1.2.8.tar.gz
-   $ tar xf zlib-1.2.8.tar.gz
-   $ cd zlib-1.2.8
+   wget http://zlib.net/zlib-1.2.8.tar.gz
+   tar xf zlib-1.2.8.tar.gz
+   cd zlib-1.2.8
    ```
 
 3. Configure, compile and install:
 
    ```
-   $ make -f win32/Makefile.gcc install BINARY_PATH=/mingw64/bin \
+   make -f win32/Makefile.gcc install BINARY_PATH=/mingw64/bin \
    INCLUDE_PATH=/mingw64/include LIBRARY_PATH=/mingw64/lib
-   $ cd ..
+   cd ..
    ```
 
 We can also use MSYS2's pre-built libraries for MinGW-w64. For example:
 
 ```
-$ pacman -S mingw-w64-i686-libpng mingw-w64-x86_64-libpng
+pacman -S mingw-w64-i686-libpng mingw-w64-x86_64-libpng
 ```
