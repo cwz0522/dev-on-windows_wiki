@@ -25,11 +25,11 @@ I assume your machine is 64-bit, and you want your compiler to target 64-bit win
 
 Done. Now you can use `gcc`, `g++`, etc to get your 64-bit targeting compiler from your regular command line. To make 32-bit binaries, use `i686-w64-mingw32-g++` and co.
 
+When you want to use MSYS2 to build/install __*nix libraries__ (e.g. the classic `./configure && make && make install`), you have to run through the MSYS2 shell. When building libraries for the 64-bit compiler run `C:\dev\msys64\mingw64_shell.bat`. For 32-bit run `C:\dev\msys64\mingw32_shell.bat`.
+
 ---
 
 ### The instructions below are an example of installing a library, this part is not required.
-
-When you want to use MSYS2 to build/install *nix _libraries_, you have to run through the MSYS2 shell. When building libraries for the 64-bit compiler run `C:\dev\msys64\mingw64_shell.bat`. For 32-bit run `C:\dev\msys64\mingw32_shell.bat`.
 
 First and foremost I suggest checking the package manager of MSYS2. It has a lot of pre-built library packages. You can search the package repository using `pacman -Ss your_library`, for example:
 
