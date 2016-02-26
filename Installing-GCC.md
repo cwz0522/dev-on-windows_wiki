@@ -27,9 +27,44 @@ Done. Now you can use `gcc`, `g++`, etc to get your 64-bit targeting compiler fr
 
 ---
 
+### The instructions below are an example of installing a library, this part is not required.
+
 When you want to use MSYS2 to build/install *nix _libraries_, you have to run through the MSYS2 shell. When building libraries for the 64-bit compiler run `C:\dev\msys64\mingw64_shell.bat`. For 32-bit run `C:\dev\msys64\mingw32_shell.bat`.
 
-As an example, we'll try and build the 64-bit zlib library:
+First and foremost I suggest checking the package manager of MSYS2. It has a lot of pre-built library packages. You can search the package repository using `pacman -Ss your_library`, for example:
+
+    $ pacman -Ss boost
+    mingw32/mingw-w64-i686-boost 1.60.0-2
+        Free peer-reviewed portable C++ source libraries (mingw-w64)
+    mingw64/mingw-w64-x86_64-boost 1.60.0-2
+        Free peer-reviewed portable C++ source libraries (mingw-w64)
+
+If the package name starts with mingw, it's a library. Install it using `pacman -Sy package_name`, e.g.:
+
+    $ pacman -Sy mingw-w64-i686-boost mingw-w64-x86_64-boost
+    :: Synchronizing package databases...
+     mingw32 is up to date
+     mingw64 is up to date
+     msys is up to date
+    resolving dependencies...
+    looking for conflicting packages...
+
+    Packages (2) mingw-w64-i686-boost-1.60.0-2  mingw-w64-x86_64-boost-1.60.0-2
+
+    Total Installed Size:  546.33 MiB
+
+    :: Proceed with installation? [Y/n] y
+    (2/2) checking keys in keyring
+    (2/2) checking package integrity
+    (2/2) loading package files
+    (2/2) checking for file conflicts
+    (2/2) checking available disk space
+    (1/2) installing mingw-w64-i686-boost
+    (2/2) installing mingw-w64-x86_64-boost
+
+Sadly there is no wildcard, but you can use <code>pacman -Sy \`pacman -Ssq boost\`</code> to install everything returned by a search.
+
+If your library is not in the package manager you must compile it yourself. As an example, we'll try and build the 64-bit zlib library:
 
 1. Open `mingw64_shell.bat` (and if not already, cd to `~`).
 
@@ -48,9 +83,3 @@ As an example, we'll try and build the 64-bit zlib library:
    INCLUDE_PATH=/mingw64/include LIBRARY_PATH=/mingw64/lib
    cd ..
    ```
-
-We can also use MSYS2's pre-built libraries for MinGW-w64. For example:
-
-```
-pacman -S mingw-w64-i686-libpng mingw-w64-x86_64-libpng
-```
