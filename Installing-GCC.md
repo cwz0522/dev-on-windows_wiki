@@ -27,7 +27,7 @@ __If you have a 32-bit _development_ machine, change every occurrence of `C:\dev
 
    ```
    pacman -S --needed base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain \
-                       mingw-w64-i686-cmake mingw-w64-x86_64-cmake
+                       git mingw-w64-i686-cmake mingw-w64-x86_64-cmake
    ```
 
 6. Add `C:\dev\msys64\mingw64\bin` and `C:\dev\msys64\mingw32\bin`, __in that order__, to your `PATH`. Note that MSYS2 also puts a lot of other tools in this directory, most notably Python. So put these entries below any other tools you might have installed in your PATH.
