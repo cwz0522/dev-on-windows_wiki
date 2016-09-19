@@ -35,6 +35,8 @@ __If you have a 32-bit _development_ machine, change every occurrence of `C:\dev
 
 Done. Now you can use `gcc`, `g++`, etc to get your 64-bit targeting compiler from your regular command line. To make 32-bit binaries, use `i686-w64-mingw32-g++` and co.
 
+To be safe and reproducible, MSYS2 by default disables inheriting your `PATH` settings in their environments. You can toggle this option per environment by looking in the respective `.ini` file in `C:\dev\msys64` for `MSYS2_PATH_TYPE=inherit`. My recommendation is to inherit the path for the MinGW32/64 environments, but keeping the MSYS environment pure.
+
 ---
 
 ### The instructions below are an example of installing a library, this part is not required.
