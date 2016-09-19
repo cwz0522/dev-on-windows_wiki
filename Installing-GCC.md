@@ -2,30 +2,37 @@ GCC is a very good compiler collection, and is fully free (in speech and beer). 
 
 We will use the MinGW-w64 port packaged with MSYS2. This also allows us to use *nix toolchains to build other libraries, as well as use the precompiled libraries that MSYS2 provides. Note that MSYS2 provides MinGW-w64 compilers. Binaries with these compilers will be standalone, and do __not__ require a `cygwin.dll` or similar file.
 
-I assume your machine is 64-bit, and you want your compiler to target 64-bit windows by default. We will install both a 32-bit and a 64-bit compiler.
+### I assume your _development_ machine is 64-bit, and you want your compiler to _target_ 64-bit windows by default. We will install both a 32-bit and a 64-bit _target_ compiler toolchain, regardless.
 
-1. Download [msys2-x86_64-latest.exe](http://repo.msys2.org/distrib/msys2-x86_64-latest.exe) and run it. Make sure to set the install directory to `C:\dev\msys64`. Choose to run MSYS2 right now.
+__If you have a 32-bit _development_ machine, change every occurrence of `C:\dev\msys64` with `C:\dev\msys32` below.__ However, it's `<current year>`, get a 64-bit machine.
 
-2. In the MSYS2 shell, execute:
+1. Download [msys2-x86_64-latest.exe](http://repo.msys2.org/distrib/msys2-x86_64-latest.exe) and run it. If your development machine is 32-bit, download [msys2-i686-latest.exe](http://repo.msys2.org/distrib/msys2-i686-latest.exe) instead. Make sure to set the install directory to `C:\dev\msys64` (`C:\dev\msys32` for 32-bit). Choose to run MSYS2 right now.
+
+2. In the MSYS2 shell, execute the following. It might give some warnings about "could not get file information", ignore this. If asked any questions, choose the default (just press enter). Hint: if you right click the title bar, go to Options -> Keys and tick "Ctrl+Shift+letter shortcuts" you can use Ctrl+Shift+V to paste in the MSYS shell.
 
     ```
+    pacman -Sy msys2-launcher-git
     update-core
     ```
 
-3. __Close the MSYS2 shell.__ Reopen it either from your start menu (MSYS2/MinGW-w64 Win64 Shell), or from `C:\dev\msys64\mingw64_shell.bat`. Hint: after starting up MSYS2, the prompt will say which version you launched. Generally you want the MINGW64 one.
+3. __Close the MSYS2 shell once you're asked to.__ There are now 3 MSYS subsystems installed: MSYS2, MinGW32 and MinGW64. They can respectively be launched from `C:\dev\msys64\msys2.exe`, `C:\dev\msys64\mingw32.exe` and `C:\dev\msys64\mingw64.exe`. _If the installer created any shortcuts to open shells for these subsystems, update them to these locations._ Each subsystem provides an environment to build Windows applications. The MSYS2 environment is for building POSIX compliant software on Windows using an emulation layer. The MinGW32/64 subsystems are for building native Windows applications using a linux toolchain (gcc, bash, etc), targetting respectively 32 and 64 bit Windows. We will install our `PATH` such that these tools can be called from regular cmd.exe as well, and we need only use the MinGW subsystem to install/update MSYS2 packages or if our build setup requires a *nux shell. Hint: after starting up MSYS2, the prompt will say which version you launched.
 
-4. Now we will update pre-installed MSYS2 packages and install GCC and common build tools. When you are queried to select packages and confirm the installation just press enter:
+4. Reopen MSYS2 (doesn't matter which version, since we're merely installing packages). __Repeatedly__ run the following command until it says there are no further updates. You might have to restart your shell again.
 
    ```
-   pacman -S base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain
-   pacman -S mingw-w64-i686-cmake mingw-w64-x86_64-cmake
+   pacman -Syuu
    ```
 
-5. Add `C:\dev\msys64\mingw64\bin` and `C:\dev\msys64\mingw32\bin`, __in that order__, to your `PATH`. Note that MSYS2 also puts a lot of other tools in this directory, most notably Python. So put these entries below any other tools you might have installed in your PATH.
+5. Now that MSYS2 is fully up-to-date we will install GCC and common build tools. When you are queried to select packages and confirm the installation just press enter:
+
+   ```
+   pacman -S --needed base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain \
+                       mingw-w64-i686-cmake mingw-w64-x86_64-cmake
+   ```
+
+6. Add `C:\dev\msys64\mingw64\bin` and `C:\dev\msys64\mingw32\bin`, __in that order__, to your `PATH`. Note that MSYS2 also puts a lot of other tools in this directory, most notably Python. So put these entries below any other tools you might have installed in your PATH.
 
 Done. Now you can use `gcc`, `g++`, etc to get your 64-bit targeting compiler from your regular command line. To make 32-bit binaries, use `i686-w64-mingw32-g++` and co.
-
-When you want to use MSYS2 to build/install __*nix libraries__ (e.g. the classic `./configure && make && make install`), you have to run through the MSYS2 shell. When building libraries for the 64-bit compiler run `C:\dev\msys64\mingw64_shell.bat`. For 32-bit run `C:\dev\msys64\mingw32_shell.bat`.
 
 ---
 
@@ -64,7 +71,7 @@ If the package name starts with mingw, it's a library. Install it using `pacman 
 
 Sadly there is no wildcard, but you can use <code>pacman -Sy \`pacman -Ssq boost\`</code> to install everything returned by a search.
 
-If your library is not in the package manager you must compile it yourself. As an example, we'll try and build the 64-bit zlib library:
+If your library is not in the package manager you must compile it yourself. As an example, we'll try and build the 64-bit zlib library (this is an excercise - zlib is installed already by default):
 
 1. Open `mingw64_shell.bat` (and if not already, cd to `~`).
 
