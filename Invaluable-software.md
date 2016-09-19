@@ -33,7 +33,3 @@ Extremely fast replacement for Ack (crossplatform - not Windows only), with good
     cd the_silver_searcher
     ./build.sh PCRE_CFLAGS=-DPCRE_STATIC LDFLAGS=-static
     cp ag.exe /c/dev/bin
-
-This is assuming you also created `C:\dev\bin` and added it to your path. Alternatively, even easier:
-
-    pacman -Sy mingw-w64-i686-ag mingw-w64-x86_64-ag
