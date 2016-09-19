@@ -17,7 +17,7 @@ I assume your machine is 64-bit, and you want your compiler to target 64-bit win
 4. Now we will update pre-installed MSYS2 packages and install GCC and common build tools. When you are queried to select packages and confirm the installation just press enter:
 
    ```
-   pacman -Su base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain
+   pacman -S base-devel mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain
    pacman -S mingw-w64-i686-cmake mingw-w64-x86_64-cmake
    ```
 
