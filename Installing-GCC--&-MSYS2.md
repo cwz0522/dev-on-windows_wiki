@@ -8,14 +8,13 @@ __If you have a 32-bit _development_ machine, change every occurrence of `C:\dev
 
 1. Download [msys2-x86_64-latest.exe](http://repo.msys2.org/distrib/msys2-x86_64-latest.exe) and run it. If your development machine is 32-bit, download [msys2-i686-latest.exe](http://repo.msys2.org/distrib/msys2-i686-latest.exe) instead. Make sure to set the install directory to `C:\dev\msys64` (`C:\dev\msys32` for 32-bit). Choose to run MSYS2 right now.
 
-2. In the MSYS2 shell, execute the following. It might give some warnings about "could not get file information", ignore this. If asked any questions, choose the default (just press enter). Hint: if you right click the title bar, go to Options -> Keys and tick "Ctrl+Shift+letter shortcuts" you can use Ctrl+Shift+V to paste in the MSYS shell.
+2. In the MSYS2 shell, execute the following. Hint: if you right click the title bar, go to Options -> Keys and tick "Ctrl+Shift+letter shortcuts" you can use Ctrl+Shift+V to paste in the MSYS shell.
 
     ```
-    pacman -Sy msys2-launcher-git
-    update-core
+   pacman -Syuu
     ```
 
-3. __Close the MSYS2 shell once you're asked to.__ There are now 3 MSYS subsystems installed: MSYS2, MinGW32 and MinGW64. They can respectively be launched from `C:\dev\msys64\msys2.exe`, `C:\dev\msys64\mingw32.exe` and `C:\dev\msys64\mingw64.exe`. _If the installer created any shortcuts to open shells for these subsystems, update them to these locations._ Each subsystem provides an environment to build Windows applications. The MSYS2 environment is for building POSIX compliant software on Windows using an emulation layer. The MinGW32/64 subsystems are for building native Windows applications using a linux toolchain (gcc, bash, etc), targetting respectively 32 and 64 bit Windows. We will install our `PATH` such that these tools can be called from regular cmd.exe as well, and we need only use the MinGW subsystem to install/update MSYS2 packages or if our build setup requires a *nux shell. Hint: after starting up MSYS2, the prompt will say which version you launched.
+3. __Close the MSYS2 shell once you're asked to.__ There are now 3 MSYS subsystems installed: MSYS2, MinGW32 and MinGW64. They can respectively be launched from `C:\dev\msys64\msys2.exe`, `C:\dev\msys64\mingw32.exe` and `C:\dev\msys64\mingw64.exe`. _If the installer created any shortcuts to open shells for these subsystems, you can update them to these locations to get pretty icons._ Each subsystem provides an environment to build Windows applications. The MSYS2 environment is for building POSIX compliant software on Windows using an emulation layer. The MinGW32/64 subsystems are for building native Windows applications using a linux toolchain (gcc, bash, etc), targetting respectively 32 and 64 bit Windows. We will install our `PATH` such that these tools can be called from regular cmd.exe as well, and we need only use the MinGW subsystem to install/update MSYS2 packages or if our build setup requires a *nix shell. Hint: after starting up MSYS2, the prompt will say which version you launched.
 
 4. Reopen MSYS2 (doesn't matter which version, since we're merely installing packages). __Repeatedly__ run the following command until it says there are no further updates. You might have to restart your shell again.
 
@@ -76,7 +75,7 @@ Sadly there is no wildcard, but you can use <code>pacman -Sy \`pacman -Ssq boost
 
 If your library is not in the package manager you must compile it yourself. As an example, we'll try and build the 64-bit zlib library (this is an excercise - zlib is installed already by default):
 
-1. Open `mingw64_shell.bat` (and if not already, cd to `~`).
+1. Open `mingw64.exe` (and if not already, cd to `~`).
 
 2. Download and unpack zlib:
 
